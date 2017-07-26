@@ -5,12 +5,14 @@ Never heard of the Traveling Salesman Problem? It's ok, just read the [Introduct
 
 ### What algorithms will we cover?
 Three classes of algorithms will be covered:
+
 **Exact**
 - Integer Programming
 - Simple Branch and Bound
 - Eastman Branch and Bound
 - Branch and Bound over Hungarian Method
 - Little et al Branch and Bound
+
 **Heuristic**
 - Nearest Neighbour Search
 - Twice Around The Tree
@@ -19,6 +21,7 @@ Three classes of algorithms will be covered:
 - General Pairwise
 - 2-OPT
 - 3-OPT
+
 **Meta-Heuristic**
 - Genetic Algorithm
 - Simulates Annealing
