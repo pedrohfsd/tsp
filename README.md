@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+## Welcome to the Travelling Salesman Problem repository
+The goal here is to talk about and share common solutions to this problem, as well as implementing and executing them on random instances. Yes, that's right, nothing is better than plotting the graph and see the magic taking place live ;).
 
-You can use the [editor on GitHub](https://github.com/pedrohfsd/TSP/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.
+Never heard of the Traveling Salesman Problem? It's ok, just read the [Introduction](https://pedrohfsd.github.io/TSP/intro) page.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### What algorithms will we cover?
+Three classes of algorithms will be covered:
+**Exact**
+- Integer Programming
+- Simple Branch and Bound
+- Eastman Branch and Bound
+- Branch and Bound over Hungarian Method
+- Little et al Branch and Bound
+**Heuristic**
+- Nearest Neighbour Search
+- Twice Around The Tree
+- Matching Based
+- Adjacent Pairwise
+- General Pairwise
+- 2-OPT
+- 3-OPT
+**Meta-Heuristic**
+- Genetic Algorithm
+- Simulates Annealing
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/pedrohfsd/TSP/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### What's the difference between Exact, Heuristic and Meta-Heuristic algorithms?
+Exact algorithms are algorithms that guarantee the optimum solution if you let them finish, the problem is that their time complexity usually belongs to O(n!) or O(2^n). Heuristic and Meta-Heuristic algorithms are algorithms that can't guarantee the optimum solution but they usually guarantee a good solution in polynomial time complexity. The difference between Heuristic and Meta-Heuristic is that Heuristic algorithms are problem dependent, they usually use the problem in their favor and because of this they tend to get stuck at a local optimum instead of converging to the global optimum. Meta-Heuristics on the other hand uses a generalized strategy, they don't know the problem a priority and can't use it in their favor, because of this they tend to get less stuck at local optimum and usually converge better to the global optimum.
