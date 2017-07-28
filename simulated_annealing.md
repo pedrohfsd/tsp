@@ -21,11 +21,12 @@ var props = {canvas:null, context:null
             , fontSize:14
             , verticeCount:function(){return document.getElementById('cityCountId').value}
             , vertices:[]
+            , background:'#5F636C'
             };
 props.canvas = document.getElementById('canvas');
 props.context = props.canvas.getContext('2d');
 props.context.font = (props.fontSize+2)+'px Arial';
-props.context.fillStyle = 'black';
+props.context.fillStyle = props.background;
 props.context.fillRect(0, 0, props.width, props.height);
 props.context.fillStyle = 'white';
 props.context.fillText('\'Input\' the number of cities to \'Generate\' the graph and \'Run\'', props.width/2-220, props.height/2);
