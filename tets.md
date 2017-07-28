@@ -1,5 +1,5 @@
-<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
-<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
+<script src="https://rawgit.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
+<script src="https://rawgit.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
 
 <div style="width:640px; margin:auto">
 <canvas id="canvas" width="640px" height="490" style="border:1px solid #000000;"></canvas>
