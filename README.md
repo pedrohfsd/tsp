@@ -8,7 +8,7 @@ Three classes of algorithms will be covered:
 
 **Meta-Heuristic**
 - Genetic Algorithm
-- [Simulated Annealing](https://pedrohfsd.github.io/TSP/simulated_annealing)
+- [Simulated Annealing](https://pedrohfsd.github.io/TSP/simulated_annealing.html)
 
 **Heuristic**
 - Nearest Neighbour Search
