@@ -1,5 +1,5 @@
-<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
-<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
+<script src="https://rawgit.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
+<script src="https://rawgit.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
 
 <canvas id="canvas" width="640" height="490" style="border:1px solid #000000;"></canvas>
 <br/>Cities: <input id='cityCountId' value='20' size="5"/>
