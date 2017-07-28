@@ -11,28 +11,32 @@ function generate(props){
 
 function resetCanvas(props, vertices){
     if(vertices.length == 0) return;
-    props.context.clearRect(0, 0, props.canvas.width, props.canvas.height);
+    props.context.fillStyle = 'black'; // #9ea7b8
+    props.context.fillRect(0, 0, props.canvas.width, props.canvas.height);
     props.context.fillStyle = 'red';
+    props.context.fillRect(vertices[0][0], vertices[0][1], 8, 8);
     for(let i=1; i<vertices.length; i++){
         addLine(props, vertices[i-1], vertices[i]);
-        props.context.fillRect(vertices[i][0], vertices[i][1], 5, 5);
+        props.context.fillRect(vertices[i][0], vertices[i][1], 8, 8);
     }
     addLine(props, vertices[vertices.length-1], vertices[0]);
-    props.context.fillStyle = 'black';
     setText(props, "Ready!");
 }
 
 function addLine(props, vertice1, vertice2){
-    props.context.strokeStyle = '#C3CEEE';
-    props.context.setLineDash([5, 3]);
+    // props.context.strokeStyle = '#C3CEEE';
     props.context.beginPath();
+    props.context.strokeStyle = 'white';
+    props.context.setLineDash([5, 3]);
     props.context.moveTo(vertice1[0], vertice1[1]);
     props.context.lineTo(vertice2[0], vertice2[1]);
-    props.context.stroke();
     props.context.closePath();
+    props.context.stroke();
 }
 
 function setText(props, text){
-    props.context.clearRect(5, props.height-props.fontSize, props.width-100, 200);
-    props.context.fillText(text, 5, props.height);
+    props.context.fillStyle = 'black';
+    props.context.fillRect(5, props.height-props.fontSize-4, props.width/1.2, props.fontSize+4);
+    props.context.fillStyle = 'white';
+    props.context.fillText(text, 5, props.height-4);
 }
