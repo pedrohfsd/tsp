@@ -1,14 +1,18 @@
-<script src="https://rawgit.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
-<script src="https://rawgit.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
+<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
+<script src="https://raw.githubusercontent.com/pedrohfsd/TSP/develop/simulated_annealing.js"></script>
 
-<canvas id="canvas" width="640" height="490" style="border:1px solid #000000;"></canvas>
-<br/>Cities: <input id='cityCountId' value='20' size="5"/>
-Initial Temperature: <input id='temperatureId' value='1000' size="5"/>
-Temperature Drop Rate (in %): <input id='dropRateId' value='0.05' size="5"/>
-Delay (in millis): <input id='delayId' value='20' size="5"/>
-<br/><button onclick="generate(props);">Generate</button>
+<div style="width:640px; margin:auto">
+<canvas id="canvas" width="640px" height="490" style="border:1px solid #000000;"></canvas>
+<br/><input id='cityCountId' value='20' size="5"/> - Cities
+<br/><input id='temperatureId' value='1000' size="5"/> - Initial Temperature
+<br/><input id='dropRateId' value='0.05' size="5"/> - Temperature Drop Rate (in %)
+<br/><input id='delayId' value='20' size="5"/> - Delay (in millis)
+<br/>
+<div style="float:right">
+<button onclick="generate(props);">Generate</button>
 <button onclick="run(props, document.getElementById('temperatureId').value, document.getElementById('dropRateId').value, document.getElementById('delayId').value);">Run</button>
 <button onclick="resetCanvas(props, props.vertices);">Reset</button>
+</div></div>
 
 <script>
 var props = {canvas:null, context:null
