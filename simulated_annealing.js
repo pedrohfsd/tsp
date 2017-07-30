@@ -5,8 +5,8 @@ function run(props, temperature, dropRate, delay){
     
     function delayedLoop(){
         setTimeout(function(){
-            state_changed(props, {vertices:bestTour.vertices}); // update canvas
-            log(props, 'Running... Temperature: '+Math.floor(temperature)+', Current: '+Math.floor(currentTour.cost)+', Best: '+Math.floor(bestTour.cost));
+            state_changed(props, {vertices:bestTour.vertices}); // update canvas graph
+            log(props, 'Running... Temperature: '+Math.floor(temperature)+', Current: '+Math.floor(currentTour.cost)+', Best: '+Math.floor(bestTour.cost)); // update canvas text
             
             newTour = findNeighbour(currentTour); // find a neighbour tour
             if(newTour.cost < currentTour.cost) currentTour = newTour; // if it's better accept it
@@ -24,10 +24,10 @@ function run(props, temperature, dropRate, delay){
 
 
 function findNeighbour(currentTour){
-    newTour = {vertices:currentTour.vertices.slice(), cost:currentTour.cost};
-    candidate1 = Math.floor(Math.random()*(currentTour.vertices.length));
-    candidate2 = Math.floor(Math.random()*(currentTour.vertices.length));
-    temp = newTour.vertices[candidate1];
+    var newTour = {vertices:currentTour.vertices.slice(), cost:currentTour.cost};
+    var candidate1 = Math.floor(Math.random()*(currentTour.vertices.length));
+    var candidate2 = Math.floor(Math.random()*(currentTour.vertices.length));
+    var temp = newTour.vertices[candidate1];
     newTour.vertices[candidate1] = newTour.vertices[candidate2];
     newTour.vertices[candidate2] = temp;
     newTour.cost = cost(newTour.vertices);
