@@ -7,7 +7,7 @@ Never heard of the Traveling Salesman Problem? It's ok, just read the [Introduct
 Three classes of algorithms will be covered:
 
 **Meta-Heuristic**
-- [Genetic Algorithm] (https://pedrohfsd.github.io/TSP/genetic_algorithm.html)
+- [Genetic Algorithm](https://pedrohfsd.github.io/TSP/genetic_algorithm.html)
 - [Simulated Annealing](https://pedrohfsd.github.io/TSP/simulated_annealing.html)
 
 **Heuristic**
