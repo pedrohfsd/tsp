@@ -13,14 +13,24 @@ function resetCanvas(props, vertices){
     if(vertices.length == 0) return;
     props.context.fillStyle = props.background;
     props.context.fillRect(0, 0, props.canvas.width, props.canvas.height);
-    props.context.fillStyle = '#34CA34';
-    props.context.fillRect(vertices[0][0], vertices[0][1], 8, 8);
+    addPoint(vertices[0]);
     for(let i=1; i<vertices.length; i++){
         addLine(props, vertices[i-1], vertices[i]);
-        props.context.fillRect(vertices[i][0], vertices[i][1], 8, 8);
+        addPoint(vertices[i]);
     }
     addLine(props, vertices[vertices.length-1], vertices[0]);
     setText(props, "Ready!");
+}
+
+function addPoint(vertice){
+    props.context.strokeStyle = '#34CA34';
+    props.context.setLineDash([2, 0]);
+    props.context.fillStyle = '#34CA34';
+    props.context.beginPath();
+    props.context.arc(vertice[0], vertice[1], 4, 0, 2 * Math.PI, false);
+    props.context.fill();
+    props.context.stroke();
+    props.context.closePath();
 }
 
 function addLine(props, vertice1, vertice2){
@@ -36,7 +46,7 @@ function addLine(props, vertice1, vertice2){
 
 function setText(props, text){
     props.context.fillStyle = props.background;
-    props.context.fillRect(5, props.height-props.fontSize-4, props.width/1.2, props.fontSize+4);
+    props.context.fillRect(5, props.height-props.fontSize-4, props.width, props.fontSize+4);
     props.context.fillStyle = 'white';
     props.context.fillText(text, 5, props.height-4);
 }
