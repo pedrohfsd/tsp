@@ -1,4 +1,6 @@
 ## Welcome to the Travelling Salesman Problem repository
+[Click here to view the html version](https://pedrohfsd.github.io/TSP/)
+
 The goal here is to talk about and share common solutions to this problem, as well as implementing and executing them on random instances. Yes, that's right, nothing is better than plotting the graph and see the magic taking place live ;).
 
 Never heard of the Traveling Salesman Problem? It's ok, just read the [Introduction](https://pedrohfsd.github.io/TSP/intro) page.
