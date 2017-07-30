@@ -1,3 +1,4 @@
+## Genetic Algorithm
 <script src="https://rawgit.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
 <script src="https://rawgit.com/pedrohfsd/TSP/develop/genetic_algorithm.js"></script>
 
