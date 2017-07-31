@@ -1,4 +1,4 @@
-[TSP Home](https://github.com/pedrohfsd/TSP)
+![](http://icons.iconarchive.com/icons/graphicloads/100-flat/16/home-icon.png) [TSP Home](https://pedrohfsd.github.io/TSP/)
 
 ## Simulated Annealing
 
@@ -39,7 +39,7 @@ props.context.font = props.fontSize+'px Arial';
 function state_changed(props, event){resetCanvas(props, event.vertices);}
 function log(props, text){setText(props, text);}
 </script>
-
+---
 <div id="disqus_thread" style="margin-top: 100px;"></div>
 <script>
 var disqus_config = function () {
