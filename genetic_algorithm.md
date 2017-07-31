@@ -1,5 +1,5 @@
 ## Genetic Algorithm
-<script src="https://rawgit.com/pedrohfsd/TSP/gh-pages/_includes/canvas.js"></script>
+<script> {% include canvas.js %}</script>
 <script src="https://rawgit.com/pedrohfsd/TSP/develop/genetic_algorithm.js"></script>
 
 <div style="width:640px; margin:auto">
