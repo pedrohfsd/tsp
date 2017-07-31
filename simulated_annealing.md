@@ -37,3 +37,19 @@ props.context.font = props.fontSize+'px Arial';
 function state_changed(props, event){resetCanvas(props, event.vertices);}
 function log(props, text){setText(props, text);}
 </script>
+
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = https://pedrohfsd.github.io/TSP/simulated_annealing;
+this.page.identifier = SIMULATED_ANNEALING;
+};
+*/
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://tsp-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
