@@ -41,10 +41,9 @@ function log(props, text){setText(props, text);}
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-this.page.url = https://pedrohfsd.github.io/TSP/simulated_annealing;
-this.page.identifier = SIMULATED_ANNEALING;
+this.page.url = 'https://pedrohfsd.github.io/TSP/simulated_annealing';
+this.page.identifier = 'SIMULATED_ANNEALING';
 };
-*/
 (function() {
 var d = document, s = d.createElement('script');
 s.src = 'https://tsp-1.disqus.com/embed.js';
