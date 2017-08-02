@@ -27,7 +27,7 @@ Three classes of algorithms will be covered:
 - Eastman Branch and Bound
 - Branch and Bound over Hungarian Method
 - Little et al Branch and Bound
-- Christofides' algorithm
+- Christofides
 
 ### What's the difference between Exact, Heuristic and Meta-Heuristic algorithms?
 Exact algorithms are algorithms that guarantee the optimum solution if you let them finish, the problem is that their time complexity usually belongs to O(n!) or O(2^n).  
