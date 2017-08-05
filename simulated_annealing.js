@@ -8,7 +8,7 @@ function run(props, temperature, dropRate, delay){
             state_changed(props, {vertices:bestTour.vertices}); // update canvas graph
             log(props, 'Running... Temperature: '+Math.floor(temperature)+', Current: '+Math.floor(currentTour.cost)+', Best: '+Math.floor(bestTour.cost)); // update canvas text
             
-            newTour = findNeighbour(currentTour); // find a neighbour tour
+            var newTour = findNeighbour(currentTour); // find a neighbour tour
             if(newTour.cost < currentTour.cost) currentTour = newTour; // if it's better accept it
             else if(Math.exp((currentTour.cost-newTour.cost)/temperature) > Math.random()) currentTour = newTour; // if there's still chance, try it
             
