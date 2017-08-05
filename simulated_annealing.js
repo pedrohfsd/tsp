@@ -9,10 +9,10 @@ function run(props, temperature, dropRate, delay){
             log(props, 'Running... Temperature: '+Math.floor(temperature)+', Current: '+Math.floor(currentTour.cost)+', Best: '+Math.floor(bestTour.cost)); // update canvas text
             
             var newTour = findNeighbour(currentTour); // find a neighbour tour
-            if(newTour.cost < currentTour.cost) currentTour = newTour; // if it's better accept it
+            if(newTour.cost <= currentTour.cost) currentTour = newTour; // if it's better accept it
             else if(Math.exp((currentTour.cost-newTour.cost)/temperature) > Math.random()) currentTour = newTour; // if there's still chance, try it
             
-            if(currentTour.cost <= bestTour.cost) bestTour = currentTour; // keep the best, always
+            if(currentTour.cost < bestTour.cost) bestTour = currentTour; // keep the best, always
             temperature *= 1-dropRate; // make it colder
             
             if(temperature>1) delayedLoop(); // loop until it's cold
