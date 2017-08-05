@@ -1,5 +1,5 @@
-## Welcome to the Travelling Salesman Problem repository
-[Click here to view the html version](https://pedrohfsd.github.io/TSP/)
+## [Welcome to the Travelling Salesman Problem repository](https://pedrohfsd.github.io/TSP/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 The goal here is to talk about and share common solutions to this problem, as well as implementing and executing them on random instances. Yes, that's right, nothing is better than plotting the graph and see the magic taking place live ;).
 
