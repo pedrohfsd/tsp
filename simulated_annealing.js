@@ -12,7 +12,7 @@ function run(props, temperature, dropRate, delay){
             if(newTour.cost < currentTour.cost) currentTour = newTour; // if it's better accept it
             else if(Math.exp((currentTour.cost-newTour.cost)/temperature) > Math.random()) currentTour = newTour; // if there's still chance, try it
             
-            if(currentTour.cost < bestTour.cost) bestTour = currentTour; // keep the best, always
+            if(currentTour.cost <= bestTour.cost) bestTour = currentTour; // keep the best, always
             temperature *= 1-dropRate; // make it colder
             
             if(temperature>1) delayedLoop(); // loop until it's cold
