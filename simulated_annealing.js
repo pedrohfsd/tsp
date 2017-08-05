@@ -1,27 +1,28 @@
 function run(props, temperature, dropRate, delay){
-    var currentTour = {vertices:props.vertices, cost:cost(props.vertices)};
-    var bestTour = {vertices:currentTour.vertices, cost:currentTour.cost};
-    var startCost = bestTour.cost;
+    var startCost = cost(props.vertices);
+    var state = {bestTour:{vertices:props.vertices, cost:startCost}, temperature:temperature, currentTour:{vertices:props.vertices, cost:startCost}};
     
     function delayedLoop(){
         setTimeout(function(){
-            state_changed(props, {vertices:bestTour.vertices}); // update canvas graph
-            log(props, 'Running... Temperature: '+Math.floor(temperature)+', Current: '+Math.floor(currentTour.cost)+', Best: '+Math.floor(bestTour.cost)); // update canvas text
-            
-            var newTour = findNeighbour(currentTour); // find a neighbour tour
-            if(newTour.cost <= currentTour.cost) currentTour = newTour; // if it's better accept it
-            else if(Math.exp((currentTour.cost-newTour.cost)/temperature) > Math.random()) currentTour = newTour; // if there's still chance, try it
-            
-            if(currentTour.cost < bestTour.cost) bestTour = currentTour; // keep the best, always
-            temperature *= 1-dropRate; // make it colder
-            
-            if(temperature>1) delayedLoop(); // loop until it's cold
-            else log(props, 'Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(bestTour.cost));
+            coolDown(props, dropRate, state);
+            if(state.temperature > 1) delayedLoop(); // loop until it's cold
+            else log(props, 'Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(state.bestTour.cost));
         }, delay);
     }
     delayedLoop();
 }
 
+function coolDown(props, dropRate, state){
+    state_changed(props, state.bestTour); // update canvas graph
+    log(props, 'Running... Temperature: '+Math.floor(state.temperature)+', Current: '+Math.floor(state.currentTour.cost)+', Best: '+Math.floor(state.bestTour.cost)); // update canvas text
+
+    var newTour = findNeighbour(state.currentTour); // find a neighbour tour
+    if(newTour.cost <= state.currentTour.cost || Math.exp((state.currentTour.cost-newTour.cost)/state.temperature) > Math.random()){
+        state.currentTour = newTour; // accept it
+        if(state.currentTour.cost < state.bestTour.cost) state.bestTour = state.currentTour; // keep the best, always
+    }            
+    state.temperature *= 1-dropRate; // make it cooler
+}
 
 function findNeighbour(currentTour){
     var newTour = {vertices:currentTour.vertices.slice(), cost:currentTour.cost};
