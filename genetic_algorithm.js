@@ -1,7 +1,8 @@
-function run(props, vertices, population_size, max_generation, mutation_rate, elitism, delay){
-    var current_generation = 1, population = populate(vertices, population_size);
+function run(initialTour, population_size, max_generation, mutation_rate, elitism, delay){
+    var current_generation = 1;
+    var population = populate(initialTour, population_size);
     var best_overall = population.find(function(o){return o.fitness==Math.min.apply(Math, population.map(function(x){return x.fitness;}));});
-    var startCost = fitness(vertices);
+    var startCost = fitness(initialTour);
     var mutations = 0;
     
     function evolve(){
@@ -17,11 +18,10 @@ function run(props, vertices, population_size, max_generation, mutation_rate, el
             }
             if(best_current.fitness < best_overall.fitness) best_overall = best_current; // keep the best, always
             
-            state_changed(props, {vertices:best_overall.vertices}); // update canvas graph
-            log(props, 'Running... Generation: '+current_generation+', Best: '+Math.floor(best_current.fitness)+', Global Best:'+Math.floor(best_overall.fitness)+', Mutations:'+mutations); // update canvas text
+            state_changed('Running... Generation: '+current_generation+', Best: '+Math.floor(best_current.fitness)+', Global Best:'+Math.floor(best_overall.fitness)+', Mutations:'+mutations, best_overall);
             current_generation++;
             if(current_generation < max_generation) evolve(); // loop until max generation
-            else log(props, 'Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(best_overall.fitness));
+            else state_changed('Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(best_overall.fitness), best_overall);
         }, delay);
     }
     evolve();
@@ -78,27 +78,27 @@ function mutate(mutationRate, individual){ // mutate, switch a pair of chromosso
     return false;
 }
 
-function populate(vertices, population_size){ // create random citizens
+function populate(tour, population_size){ // create random citizens
     var population = [];
     for(let i=0; i<population_size; i++){
-        var temp = vertices.slice();
-        var tour = []
+        var temp = tour.slice();
+        var newTour = []
         while(temp.length > 0){
             var index = Math.floor(Math.random()*(temp.length));
-            tour.push(temp[index]);
+            newTour.push(temp[index]);
             temp.splice(index, 1);
         }
-        population.push({vertices:tour, fitness:fitness(tour)});
+        population.push({vertices:newTour, fitness:fitness(newTour)});
     }
     return population;
 }
 
-function fitness(vertices){ // returns the cost of the tour
+function fitness(tour){ // returns the cost of the tour
     var total = 0;
-    for(let i=1; i<vertices.length; i++){
-        total += distance(vertices[i-1], vertices[i]);
+    for(let i=1; i<tour.length; i++){
+        total += distance(tour[i-1], tour[i]);
     }
-    total += distance(vertices[vertices.length-1], vertices[0]);
+    total += distance(tour[tour.length-1], tour[0]);
     return total;
 }
 
@@ -106,10 +106,4 @@ function distance(vertice1, vertice2){ // replace with Manhattan, Haversine, etc
     return Math.sqrt(Math.pow(vertice1[0]-vertice2[0], 2)+Math.pow(vertice1[1]-vertice2[1], 2));
 }
 
-function log(){
-    console.log('log() must be implemented');
-}
-
-function state_changed(props, event){
-    console.log('state_changed() must be implemented');
-}
+function state_changed(props, event){}

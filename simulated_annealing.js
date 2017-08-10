@@ -1,22 +1,20 @@
-function run(props, temperature, dropRate, delay){
-    var startCost = cost(props.vertices);
-    var state = {bestTour:{vertices:props.vertices, cost:startCost}, temperature:temperature, currentTour:{vertices:props.vertices, cost:startCost}};
+function run(initialTour, temperature, dropRate, delay){
+    var startCost = cost(initialTour);
+    var state = {bestTour:{vertices:initialTour, cost:startCost}, temperature:temperature, currentTour:{vertices:initialTour, cost:startCost}};
     
-    function delayedLoop(){
+    function delayed_coolDown(){
         setTimeout(function(){
-            coolDown(props, dropRate, state);
-            if(state.temperature > 1) delayedLoop(); // loop until it's cold
-            else log(props, 'Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(state.bestTour.cost));
+            coolDown(dropRate, state);
+            if(state.temperature > 1) delayed_coolDown(); // loop until it's cold
+            else state_changed('Started with cost: '+Math.floor(startCost)+', ended with cost: '+Math.floor(state.bestTour.cost), state.bestTour);
         }, delay);
     }
-    delayedLoop();
+    delayed_coolDown();
 }
 
-function coolDown(props, dropRate, state){
-    state_changed(props, state.bestTour); // update canvas graph
-    log(props, 'Running... Temperature: '+Math.floor(state.temperature)+', Current: '+Math.floor(state.currentTour.cost)+', Best: '+Math.floor(state.bestTour.cost)); // update canvas text
-
-    var newTour = findNeighbour(state.currentTour); // find a neighbour tour
+function coolDown(dropRate, state){
+    state_changed('Running... Temperature: '+Math.floor(state.temperature)+', Current: '+Math.floor(state.currentTour.cost)+', Best: '+Math.floor(state.bestTour.cost), state.bestTour);
+    var newTour = findNeighbour(state.currentTour); // find a neighbor tour
     if(newTour.cost <= state.currentTour.cost || Math.exp((state.currentTour.cost-newTour.cost)/state.temperature) > Math.random()){
         state.currentTour = newTour; // accept it
         if(state.currentTour.cost < state.bestTour.cost) state.bestTour = state.currentTour; // keep the best, always
@@ -48,10 +46,4 @@ function distance(vertice1, vertice2){ // replace with Manhattan, Haversine, etc
     return Math.sqrt(Math.pow(vertice1[0]-vertice2[0], 2)+Math.pow(vertice1[1]-vertice2[1], 2));
 }
 
-function log(){
-    console.log('log() must be implemented');
-}
-
-function state_changed(props, event){
-    console.log('state_changed() must be implemented');
-}
+function state_changed(message, event){}
