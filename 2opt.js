@@ -27,19 +27,12 @@ function two_opt(currentTour){
     for(let i=1; i<n-2; i++){
         for(let j=i+1; j<n+1; j++){
             if(j-i == 1) continue;
-            var newTour = two_opt_swap(currentTour.vertices, i, j);
+            var swap = currentTour.vertices.slice(0,i).concat(currentTour.vertices.slice(i,j).reverse(), currentTour.vertices.slice(j,n))
+            var newTour = {vertices:swap, cost:cost(swap)};
             if(newTour.cost < bestTour.cost) bestTour = newTour;
         }
     }
     return bestTour;
-}
-
-function two_opt_swap(vertices, i, j){
-    var left = vertices.slice(0,i);
-    var middle = vertices.slice(i,j);
-    var right = vertices.slice(j,vertices.length);
-    var swap = left.concat(middle.reverse()).concat(right);
-    return {vertices:swap, cost:cost(swap)};
 }
 
 function cost(vertices){
